@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <string.h> //not used in 1
 
+
+
+
 char* my_str_n_cat(char* destination, char* source, int n);
 
 int get_length(char* source);
@@ -23,4 +26,5 @@ typedef struct occurrences
 	double frequency;
 } Occurrences;
 
-int maximum_occurrences(char* string, Occurrences* struct_ptr, int* ptr, char* c_ptr);
+
+int maximum_occurrences(char* string, Occurrences* struct_ptr, int* ptr, char* c_ptr); 
