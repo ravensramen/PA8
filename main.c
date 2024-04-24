@@ -1,6 +1,7 @@
-//finish + debug alphabet
 
-int main() 
+//fix alphabet issue
+#include "header.h"
+int main()
 {
 
 	//Question 1
@@ -83,13 +84,22 @@ int main()
 
 	//QUESTION 6
 
-	Occurrences characters[26]; //stores data for all 26 letters
+	 //stores data for all 26 letters
+	Occurrences characters[26]; //for each alpha letter
 	int return_value = 0;
-	char ch[2];
+	char ch[2]; //returns highest frequency
 	char str[50]; //string up to size 50
 	printf("Enter a string:\n");
-	fgets(str);
-	maximum_occurrences(str, characters, &return_value, ch);
+	scanf("%s", str);
+	//fgets(str, 50, stdin); //can replace stdin with a file
+	// 
+	// 
+	//for debug
+	int max = 0;
+
+	max = maximum_occurrences(str, characters, &return_value, ch);
+
+	printf("%d", max);
 
 	return 0;
 
