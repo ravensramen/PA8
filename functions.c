@@ -3,7 +3,6 @@
 //QUESTION 1
 
 
-
 char* my_str_n_cat(char* destination, char* source, int n)
 {
 
@@ -17,17 +16,23 @@ char* my_str_n_cat(char* destination, char* source, int n)
     return destination;
 
 }
-
+//Description: Concatenates string without string library function. 
+//Parameters: Destination and source string, number of characters to concatenate. 
+//Return: Returns concatenated string.
 
 int get_length(char* source)
 {
     int i = 0;
-    while (source[i] != '\0')
+    while (source[i] != '\0') //while null not reached
     {
         i++;
     }
     return i;
 }
+//Description: Determines the length of the source string.
+//Parameters: Source string.
+//Return: Integer coresponding to string length.
+
 
 //QUESTION 2
 
@@ -54,8 +59,12 @@ int binary_search(int list[], int n, int target) {
 
     return target_index;
 }
+//Description: Basic binary search function.
+//Parameters: List array, number of values, target value. 
+//Return: If value was found or not. 
 
 //Question 3
+
 void bubble_sort(char* strings[], int n) {
     int unsorted = n - 1; // Marker for the unsorted section
 
@@ -74,7 +83,7 @@ void bubble_sort(char* strings[], int n) {
             current++;
         }
 
-        if (!swapped) { //check, not changed from bool og MEOWMEOWMEOW
+        if (!swapped) {
             // If no swaps occurred in this pass, the list is already sorted
             break;
         }
@@ -82,6 +91,9 @@ void bubble_sort(char* strings[], int n) {
         unsorted--;
     }
 }
+//Description: Basic bubble sort. 
+//Parameters: String of characters, size of string.
+//Return: Sorted string. 
 
 int is_palindrome(char* string, int length) {
     // Base case: if the length is 0 or 1, it's a palindrome
@@ -98,6 +110,10 @@ int is_palindrome(char* string, int length) {
         return 0;
     }
 }
+//Description: Determines if string is a palindrome or not. 
+//Parameters: String, length. 
+//Return: Integer coresponding to whether or not string is a palindrome. 
+
 int sum_primes(unsigned int n)
 {
     if (n < 2) {
@@ -112,6 +128,9 @@ int sum_primes(unsigned int n)
         }
     }
 }
+//Description: Recursively determines the sum of primes from 2 to n.
+//Parameters: User inputted integer n. 
+//Return: Sum of primes. 
 
 int is_prime(unsigned int num, unsigned int divisor) {
     if (divisor == 1) //base case (2)
@@ -127,152 +146,117 @@ int is_prime(unsigned int num, unsigned int divisor) {
         else return is_prime(num, divisor - 1); //keep looking for prime factors at every lower value 
     }
 }
+//Description: Recursively determines if number is a prime or not. 
+//Parameters: Number, divisor of number.
+//Return: Whether or not number is prime. 
 
-int maximum_occurrences(char* string, Occurrences* struct_ptr, int* ptr, char* c_ptr)
+void maximum_occurrences(char* string, Occurrences struct_ptr[], int* ptr, char* c_ptr)
 {
-    int i = 0, index = 0, frequency = 0;
-    char c = *(string + i);//character found at each index value of the string
+    int count[26] = { 0 }; //stores frequency of each character
+    char temp[26] = { '\0' }; //stores the corresponding character
 
-    char* alphabets = "abcdefghijklmnopqrstuvwxyz";
+    int next = 0, next_int = 0, c = 0, hold = 0, total = 0;
 
-    while (c != '\0') //while not at the end of the string
-    {
-        switch (c)
+    while (*string != '\0') //while not at the end of the string
+    { 
+        for(int i = 0; i<100; i++)
         {
-        case 'a':
-        case 'A':
-            struct_ptr->frequency++; //increments frequency of letter
-            break;
-        case 'b':
-        case 'B':
-            (struct_ptr + 1)->frequency++;
-            break;
-        case 'c':
-        case 'C':
-            (struct_ptr + 2)->frequency++;
-            break;
-        case 'd':
-        case 'D':
-            (struct_ptr + 3)->frequency++;
-            break;
-        case 'e':
-        case 'E':
-            (struct_ptr + 4)->frequency++;
-            break;
-        case 'f':
-        case 'F':
-            (struct_ptr + 5)->frequency++;
-            break;
-        case 'g':
-        case 'G':
-            (struct_ptr + 6)->frequency++;
-            break;
-        case 'h':
-        case 'H':
-            (struct_ptr + 7)->frequency++;
-            break;
-        case 'i':
-        case 'I':
-            (struct_ptr + 8)->frequency++;
-            break;
-        case 'j':
-        case 'J':
-            (struct_ptr + 9)->frequency++;
-            break;
-        case 'k':
-        case 'K':
-            (struct_ptr + 9)->frequency++;
-            break;
-        case 'l':
-        case 'L':
-            (struct_ptr + 11)->frequency++;
-            break;
-
-        case 'm':
-        case 'M':
-            (struct_ptr + 11)->frequency++;
-            break;
-
-        case 'n':
-        case 'N':
-            (struct_ptr + 13)->frequency++;
-            break;
-
-        case 'o':
-        case 'O':
-            (struct_ptr + 14)->frequency++;
-            break;
-
-        case 'p':
-        case 'P':
-            (struct_ptr + 15)->frequency++;
-            break;
-
-        case 'q':
-        case 'Q':
-            (struct_ptr + 16)->frequency++;
-            break;
-
-        case 'r':
-        case 'R':
-            (struct_ptr + 17)->frequency++;
-            break;
-
-        case 's':
-        case 'S':
-            (struct_ptr + 18)->frequency++;
-            break;
-
-        case 't':
-        case 'T':
-            (struct_ptr + 19)->frequency++;
-            break;
-
-        case 'u':
-        case 'U':
-            (struct_ptr + 20)->frequency++;
-            break;
-
-        case 'v':
-        case 'V':
-            (struct_ptr + 21)->frequency++;
-            break;
-
-        case 'w':
-        case 'W':
-            (struct_ptr + 22)->frequency++;
-            break;
-
-        case 'x':
-        case 'X':
-            (struct_ptr + 23)->frequency++;
-            break;
-
-        case 'y':
-        case 'Y':
-            (struct_ptr + 24)->frequency++;
-            break;
-
-        case 'z':
-        case 'Z':
-            (struct_ptr + 25)->frequency++;
-            break;
+            if(*string==temp[i])
+            {
+                hold = i;
+                c++; 
+            }
+        
         }
-        i++;
-        c = *(string + i); //go on to next index value
-    }
-    frequency = struct_ptr->frequency; //access frequency in struct
-
-    for (i = 0; i < 26; i++)
-    {
-        if (frequency < (struct_ptr + i)->frequency)
+        if(c==0)
         {
-            index = i;
-            frequency = (struct_ptr + i)->frequency;
+            temp[next++] = *string;
+        }
+        else
+        {
+            count[hold] += c;
+        }
+        total++;
+        string++;
+
+    }
+    for(int i = 0; i<sizeof(struct_ptr)/sizeof(Occurrences); i++)
+    {
+        if (count[i] != 0) 
+        {
+            struct_ptr[i].num_occurrences = count[i] + 1;
+            struct_ptr[i].frequency = (double)(count[i] + 1) / total;
+        }
+        else
+        {
+            struct_ptr[i].num_occurrences = 1;
+            struct_ptr[i].frequency = 1.0 / total;
+        }
+    
+    }
+    int max = 0, max_index = 0;
+    for(int i = 0; i<26; i++)
+    {
+        if (count[i] > max) 
+        {
+            max = count[i];
+            max_index = i;
         }
     }
-    *ptr = frequency; //finds frequency of most occuring letter
-    *c_ptr = *(alphabets + index); //dereferences the alphabet character that was found the most amount of times
+    *ptr = max+1;
+    *c_ptr = temp[max_index];
+}
+//Description: User-inputted string, struct to record max occurence and frequency, pointer to character and frequency
+//Parameters: Pointer to string, max occurence and frequency pointers. 
+//Return: Most frequent character + its frequency. 
 
-    return frequency;
+//BONUS QUESTION 7
+void max_consecutive_integer(int** arr, int rows, int cols, int* max_consec, int* count) 
+{
+    int i=0, j=0, data_at_index, max_count = 1;
+    int counter = 1;
+
+    data_at_index = (int)arr[0][0];
+
+
+    //loop through each row
+    for (i = 0; i < rows; i++)
+    {
+        if (i == 0)
+        {
+            j = 1;
+        }
+        else
+        {
+            j = 0;
+        }
+        //loop through each column
+        for (; j < cols; j++)
+        {
+            if (arr[i][j] == data_at_index)//increment if value is repeated
+            {
+                counter = counter + 1; //increments frequency of number
+            }
+            else
+            {
+                if (max_count < counter) //if most frequent value
+                {
+                    max_count = counter; //set value as most frequent
+                    *max_consec = data_at_index; //dereferences to save the most frequent number
+                }
+
+                counter = 1; //resets counter
+                data_at_index = arr[i][j];
+
+            }
+        }
+
+    }
+    *count = max_count; //frequency of most frequent number
+
+    //Description: 2D array storing integers, determines what value occurs most. 
+    //Parameters: 2D array, num rows and columns, pointer to most frequent int and its frequency
+    //Return: Most frequent int and it's frequency. 
+
+
 }
